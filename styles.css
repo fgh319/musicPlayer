@@ -1,0 +1,120 @@
+.iconpark-icon {
+  width: 1.6em;
+  height: 1.6em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.iconpark-icon:hover {
+  opacity: 0.8;
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.cover::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.panel {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 200px;
+  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0, 0, 0, 0));
+  padding: 20px 30px;
+  color: #fff;
+}
+
+.panel .title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.panel .singer {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.panel .bar-container {
+  height: 4px;
+  background-color: #a3a3a3;
+  border-radius: 2px;
+  margin-top: 22px;
+  cursor: pointer;
+}
+
+.panel .bar {
+  position: relative;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 2px;
+  /* transition: all 1s linear; */
+}
+
+.panel .bar .circle {
+  position: absolute;
+  right: -7px;
+  top: -3.8px;
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.panel .duration {
+ display: flex;
+ justify-content: space-between;
+ font-size: 12px;
+ margin-top: 4px;
+ color: #a3a3a3;
+}
+
+.panel .control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.hide {
+  display: none;
+}
+
+.icon-play, .icon-pause {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.musicCover {
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+}

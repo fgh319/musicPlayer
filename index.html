@@ -1,12 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>hello</h1>
-</body>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main">
+      <div class="player">
+        <div class="cover" style="background-image: url(cover/星晴.jpg)"></div>
+        <div class="musicCover" style="background-image: url(cover/星晴.jpg);"></div>
+        <div class="panel">
+          <div class="title">歌曲名</div>
+          <div class="singer">歌手</div>
+          <div class="progress">
+            <div class="bar-container">
+              <div class="bar" style="width: 0">
+                <span class="circle"></span>
+              </div>
+            </div>
+            <div class="duration">
+              <div class="currentTime">-:--</div>
+              <div class="restTime">-:--</div>
+            </div>
+          </div>
+          <div class="control">
+            <svg class="iconpark-icon icon-loop">
+              <use href="#loop-once"></use>
+            </svg>
+            <svg class="iconpark-icon icon-play-once hide">
+              <use href="#play-once"></use>
+            </svg>
+            <svg class="iconpark-icon icon-play-cycle hide">
+              <use href="#play-cycle"></use>
+            </svg>
+            <svg class="iconpark-icon icon-shuffle hide">
+              <use href="#shuffle-one"></use>
+            </svg>
+            <svg class="iconpark-icon icon-pre">
+              <use href="#go-start"></use>
+            </svg>
+            <svg class="iconpark-icon icon-play"><use href="#play"></use></svg>
+            <svg class="iconpark-icon icon-pause hide">
+              <use href="#pause-one"></use>
+            </svg>
+            <svg class="iconpark-icon icon-next">
+              <use href="#go-end"></use>
+            </svg>
+            <svg class="iconpark-icon icon-list">
+              <use href="#music-list"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="list"></div>
+    </div>
+
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_21240_11.b09d61f6621ac167b3017265c3ca54e1.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>

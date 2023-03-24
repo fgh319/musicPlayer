@@ -1,0 +1,79 @@
+[
+  {
+    "id": "0",
+    "title": "星晴",
+    "singer": "周杰伦",
+    "url": "music/星晴-周杰伦.mp3",
+    "cover": "cover/星晴.jpg"
+  },
+  {
+    "id": "1",
+    "title": "虎口脱险",
+    "singer": "老狼",
+    "url": "music/虎口脱险-老狼.mp3",
+    "cover": "cover/虎口脱险.jpg"
+  },
+  {
+    "id": "2",
+    "title": "干杯",
+    "singer": "五月天",
+    "url": "music/干杯-五月天.mp3",
+    "cover": "cover/干杯.jpg"
+  },
+  {
+    "id": "3",
+    "title": "流沙",
+    "singer": "陶喆",
+    "url": "music/流沙-陶喆.mp3",
+    "cover": "cover/流沙.jpg"
+  },
+  {
+    "id": "4",
+    "title": "Every Breath You Take",
+    "singer": "The Police",
+    "url": "music/Every Breath You Take-The Police.mp3",
+    "cover": "cover/Every_Breath_You_Take.jpg"
+  },
+  {
+    "id": "5",
+    "title": "Hotel California",
+    "singer": "Eagles",
+    "url": "music/Hotel California-Eagles.mp3",
+    "cover": "cover/Hotel_California.jpg"
+  },
+  {
+    "id": "6",
+    "title": "Tequila Sunrise",
+    "singer": "Eagles",
+    "url": "music/Tequila Sunrise-Eagles.mp3",
+    "cover": "cover/Tequila_Sunrise.jpg"
+  },
+  {
+    "id": "7",
+    "title": "New Boy",
+    "singer": "朴树",
+    "url": "music/New Boy-朴树.mp3",
+    "cover": "cover/New_Boy.jpg"
+  },
+  {
+    "id": "8",
+    "title": "我爱的人",
+    "singer": "陈小春",
+    "url": "music/我爱的人-陈小春.mp3",
+    "cover": "cover/我爱的人.jpg"
+  },
+  {
+    "id": "9",
+    "title": "明天的明天的明天",
+    "singer": "动力火车",
+    "url": "music/明天的明天的明天.mp3",
+    "cover": "cover/明天的明天的明天.jpg"
+  },
+  {
+    "id": "10",
+    "title": "珊瑚海",
+    "singer": "周杰伦",
+    "url": "music/珊瑚海-周杰伦.mp3",
+    "cover": "cover/珊瑚海.jpg"
+  }
+]
