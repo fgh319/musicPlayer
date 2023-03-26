@@ -30,7 +30,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
-  -webkit-filter: blur(10px);
+
 }
 
 .panel {
@@ -141,7 +141,6 @@
   color: #fff;
   background-color: #000000bf;
   backdrop-filter: blur(10px);
-  -webkit-filter: blur(10px);
   height: 100vh;
   position: fixed;
   top: 0;
