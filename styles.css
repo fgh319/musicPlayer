@@ -38,7 +38,7 @@
   right: 0px;
   bottom: 0px;
   height: 200px;
-  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   padding: 20px 30px;
   color: #fff;
 }
@@ -52,11 +52,12 @@
 .panel .singer {
   font-size: 14px;
   margin-top: 6px;
+  color:#b0b0b0;
 }
 
 .panel .bar-container {
   height: 4px;
-  background-color: #a3a3a3;
+  background-color: #7c7c7c;
   border-radius: 2px;
   margin-top: 22px;
   cursor: pointer;
@@ -83,11 +84,11 @@
 }
 
 .panel .duration {
- display: flex;
- justify-content: space-between;
- font-size: 12px;
- margin-top: 4px;
- color: #a3a3a3;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 6px;
+  color: #a3a3a3;
 }
 
 .panel .control {
@@ -101,7 +102,8 @@
   display: none;
 }
 
-.icon-play, .icon-pause {
+.icon-play,
+.icon-pause {
   width: 2.5em;
   height: 2.5em;
 }
@@ -117,4 +119,83 @@
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 12px;
+}
+
+.panel .modes {
+  display: flex;
+  align-items: center;
+}
+
+.icon-normal, .icon-once, .icon-shuffle {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.list {
+  color: #fff;
+background-color: #000000bf;
+  backdrop-filter: blur(10px);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  transition: all 0.5s;
+}
+
+.list.out {
+  transform: translateY(0);
+}
+
+.list ul {
+ list-style: none;
+ padding: 0 16px;
+}
+
+.list li {
+  /* background-color: #a3a3a3; */
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  /* border-bottom: 1px #3d3d3d solid; */
+}
+
+.list li:hover {
+  color: #b0b0b0;
+}
+
+.list li span {
+  display: block;
+}
+
+.list li .title {
+  font-weight: bold;
+}
+
+.list li .title.playing {
+  color: rgba(13, 236, 69, 0.941);
+}
+
+.list li .singer {
+  color: #b0b0b0;
+  font-size: 12px;
+}
+
+.pulldown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(13, 221, 65, 0.941);
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+   cursor: pointer;
 }

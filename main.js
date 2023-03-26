@@ -76,29 +76,44 @@ const list = [
     url: "music/珊瑚海-周杰伦.mp3",
     cover: "cover/珊瑚海.jpg",
   },
+  {
+    id: "11",
+    title: "知足",
+    singer: "五月天",
+    url: "music/知足-五月天.mp3",
+    cover: "cover/知足.jpg",
+  },
 ];
 
 const title = document.querySelector(".title");
 const singer = document.querySelector(".singer");
 const cover = document.querySelector(".cover");
-const musicCover = document.querySelector('.musicCover');
+const musicCover = document.querySelector(".musicCover");
 const currentTime = document.querySelector(".currentTime");
 const restTime = document.querySelector(".restTime");
 const bar = document.querySelector(".bar");
-const barContainer = document.querySelector('.bar-container');
-const circle = document.querySelector('.circle');
-const panel = document.querySelector('.panel');
+const barContainer = document.querySelector(".bar-container");
+const circle = document.querySelector(".circle");
+const panel = document.querySelector(".panel");
+const listPanel = document.querySelector(".list");
 
 const playBtn = document.querySelector(".icon-play");
 const pauseBtn = document.querySelector(".icon-pause");
 const preBtn = document.querySelector(".icon-pre");
 const nextBtn = document.querySelector(".icon-next");
+const modeBtn = document.querySelector(".modes");
+const listBtn = document.querySelector(".icon-list");
+const pulldownBtn = document.querySelector('.pulldown');
 
 let clock = null;
+let clock2 = null; //用于优化播放拖动卡顿
 let index = 0;
-
+let modes = ["normal", "once", "shuffle"];
+let modeIndex = 0;
+// normal once shuffle
+renderList();
 const audioObj = new Audio();
-setAudio(0);
+setAudio(index);
 
 audioObj.addEventListener("canplay", function () {
   currentTime.textContent = parseTime(audioObj.currentTime);
@@ -114,40 +129,164 @@ pauseBtn.onclick = function () {
 };
 
 preBtn.onclick = function () {
-  index -= 1;
-  if (index < 0) {
-    index = list.length - 1;
+  if (modes[modeIndex] === "shuffle") {
+    playShuffle();
+  } else {
+    playPre();
   }
-  setAudio(index);
-  play();
 };
 
 nextBtn.onclick = function () {
+  if (modes[modeIndex] === "shuffle") {
+    playShuffle();
+  } else {
+    playNext();
+  }
+};
+
+// 进度条点击
+barContainer.onclick = function (event) {
+  let percentage = (event.clientX - barContainer.offsetLeft) / this.offsetWidth;
+  bar.style.width = percentage * 100 + "%";
+  audioObj.currentTime = percentage * audioObj.duration;
+};
+
+// 进度条拖动
+
+circle.onmousedown = function () {
+  function onMouseMove(event) {
+    let percentage =
+      (event.clientX - barContainer.offsetLeft) / barContainer.offsetWidth;
+    bar.style.width = (percentage >= 1 ? 1 : percentage) * 100 + "%";
+    if (clock2) {
+      clearTimeout(clock2);
+    }
+    clock2 = setTimeout(() => {
+      audioObj.currentTime = percentage * audioObj.duration;
+    }, 100);
+  }
+  panel.addEventListener("mousemove", onMouseMove);
+  panel.onmouseup = function () {
+    panel.removeEventListener("mousemove", onMouseMove);
+    panel.onmouseup = null;
+  };
+};
+
+circle.ontouchstart = function () {
+  function onTouchMove(event) {
+    // console.log(event);
+    let percentage =
+      (event.touches[0].clientX - barContainer.offsetLeft) /
+      barContainer.offsetWidth;
+    bar.style.width = (percentage >= 1 ? 1 : percentage) * 100 + "%";
+    if (clock2) {
+      clearTimeout(clock2);
+    }
+    clock2 = setTimeout(() => {
+      audioObj.currentTime = percentage * audioObj.duration;
+    }, 100);
+  }
+  panel.addEventListener("touchmove", onTouchMove);
+  panel.ontouchend = function () {
+    panel.removeEventListener("touchmove", onTouchMove);
+    panel.ontouchend = null;
+  };
+};
+
+audioObj.onended = function () {
+  if (modes[modeIndex] === "normal") {
+    playNext();
+  } else if (modes[modeIndex] === "once") {
+    playOnce();
+  } else if (modes[modeIndex] === "shuffle") {
+    playShuffle();
+  }
+};
+
+modeBtn.onclick = function () {
+  modeIndex += 1;
+  if (modeIndex >= modes.length) {
+    modeIndex = 0;
+  }
+
+  Array.from(modeBtn.children).forEach((mode) => {
+    mode.classList.remove("show");
+  });
+  modeBtn.children[modeIndex].classList.add("show");
+};
+
+listBtn.onclick = function () {
+  listPanel.classList.add("out");
+};
+
+listPanel.onclick = function (event) {
+
+  if (event.target.closest("li")) {
+    let listPanelIndex = Array.from(event.target.closest("ul").children).indexOf(
+      event.target.closest("li")
+    );
+    setAudio(listPanelIndex);
+    play();
+    index = listPanelIndex;
+    this.classList.remove("out");
+  } else if(event.target.closest('div').classList.contains('pulldown')) {
+    this.classList.remove("out");
+  }
+  
+};
+
+/**
+ * <li>
+      <span class="title">歌曲名</span>
+      <span class="singer">歌手</span>
+    </li>
+ */
+function renderList() {
+  const ul = document.createElement("ul");
+
+  const songs = list.map((song) => {
+    const li = document.createElement("li");
+    const title = document.createElement("span");
+    title.classList.add("title");
+    title.append(song.title);
+    const singer = document.createElement("span");
+    singer.classList.add("singer");
+    singer.append(song.singer);
+    li.append(title, singer);
+    return li;
+  });
+  ul.append(...songs);
+  listPanel.append(ul);
+}
+
+function playNext() {
   index += 1;
   if (index >= list.length) {
     index = 0;
   }
   setAudio(index);
   play();
-};
-
-barContainer.onclick = function(event) {
-  let percentage = event.offsetX / this.offsetWidth;
-  bar.style.width = percentage * 100 + '%';
-  audioObj.currentTime = percentage * audioObj.duration;
 }
 
-let isDrag = false;
-
-circle.onmousedown = function() {
-  isDrag = true;
+function playPre() {
+  index -= 1;
+  if (index < 0) {
+    index = list.length - 1;
+  }
+  setAudio(index);
+  play();
 }
 
-circle.onmouseup = function() {
-  isDrag = false;
+function playShuffle() {
+  let indexShuffle = Math.floor(Math.random() * list.length);
+  setAudio(indexShuffle);
+  play();
 }
 
-
+function playOnce() {
+  setAudio(index);
+  play();
+}
 
 function parseTime(time) {
   seconds = Math.floor(time);
@@ -170,13 +309,20 @@ function setAudio(index = 0) {
   singer.textContent = currentAudio.singer;
   cover.style.backgroundImage = `url(${currentAudio.cover})`;
   musicCover.style.backgroundImage = `url(${currentAudio.cover})`;
+
+  Array.from(listPanel.children[1].children).forEach(function (li) {
+    li.children[0].classList.remove("playing");
+  });
+  console.log();
+  listPanel.children[1].children[index].children[0].classList.add("playing");
+  // listUl.children[index].children[0].classList.add('playing');
 }
 
 function play() {
   audioObj.play();
   playBtn.classList.add("hide");
   pauseBtn.classList.remove("hide");
-  clock = setInterval(changeProgress, 60);
+  clock = setInterval(changeProgress, 1000);
 }
 
 function pause() {
@@ -185,4 +331,3 @@ function pause() {
   playBtn.classList.remove("hide");
   clearInterval(clock);
 }
-

@@ -11,7 +11,10 @@
     <div id="main">
       <div class="player">
         <div class="cover" style="background-image: url(cover/星晴.jpg)"></div>
-        <div class="musicCover" style="background-image: url(cover/星晴.jpg);"></div>
+        <div
+          class="musicCover"
+          style="background-image: url(cover/星晴.jpg)"
+        ></div>
         <div class="panel">
           <div class="title">歌曲名</div>
           <div class="singer">歌手</div>
@@ -27,18 +30,21 @@
             </div>
           </div>
           <div class="control">
-            <svg class="iconpark-icon icon-loop">
-              <use href="#loop-once"></use>
-            </svg>
-            <svg class="iconpark-icon icon-play-once hide">
-              <use href="#play-once"></use>
-            </svg>
-            <svg class="iconpark-icon icon-play-cycle hide">
+            <div class="modes">
+              <svg class="iconpark-icon icon-normal show">
+                <use href="#loop-once"></use>
+              </svg>
+              <svg class="iconpark-icon icon-once">
+                <use href="#play-once"></use>
+              </svg>
+              <!-- <svg class="iconpark-icon icon-play-cycle hide">
               <use href="#play-cycle"></use>
-            </svg>
-            <svg class="iconpark-icon icon-shuffle hide">
-              <use href="#shuffle-one"></use>
-            </svg>
+              </svg> -->
+              <svg class="iconpark-icon icon-shuffle">
+                <use href="#shuffle-one"></use>
+              </svg>
+            </div>
+
             <svg class="iconpark-icon icon-pre">
               <use href="#go-start"></use>
             </svg>
@@ -55,10 +61,24 @@
           </div>
         </div>
       </div>
-      <div class="list"></div>
+      <div class="list">
+        <div class="pulldown">
+          <svg class="iconpark-icon icon-pulldown"><use href="#drop-down-list"></use></svg>
+        </div>
+        <!-- <ul>
+          <li>
+            <span class="title">歌曲名</span>
+            <span class="singer">歌手</span>
+          </li>
+          <li>
+            <span class="title">歌曲名</span>
+            <span class="singer">歌手</span>
+          </li>
+        </ul> -->
+      </div>
     </div>
 
-    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_21240_11.b09d61f6621ac167b3017265c3ca54e1.js"></script>
+    <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/svg_21240_10.178c97e98eff2f8c0940f5493d6e666c.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

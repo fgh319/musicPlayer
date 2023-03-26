@@ -75,5 +75,12 @@
     "singer": "周杰伦",
     "url": "music/珊瑚海-周杰伦.mp3",
     "cover": "cover/珊瑚海.jpg"
+  },
+  {
+    "id": "11",
+    "title": "知足",
+    "singer": "五月天",
+    "url": "music/知足-五月天.mp3",
+    "cover": "cover/知足.jpg"
   }
 ]
