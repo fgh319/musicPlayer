@@ -83,6 +83,7 @@ const list = [
     url: "music/知足-五月天.mp3",
     cover: "cover/知足.jpg",
   },
+
 ];
 
 const title = document.querySelector(".title");

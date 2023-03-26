@@ -139,21 +139,26 @@
 
 .list {
   color: #fff;
-  background-color: #000000bf;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: #000000ee;
+  
+  /* transform backdrop-filter等属性会影响position: fixed的效果  */
+
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
   height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  transform: translateY(100%);
-  transition: all 0.5s;
+  display: none;
+  /* transform: translateY(100%); */
+  overflow: auto;
 }
 
 .list.out {
-  transform: translateY(0);
+  display: block;
+  /* transform: translateY(0); */
 }
 
 .list ul {
@@ -201,6 +206,5 @@
   position: fixed;
   right: 10%;
   bottom: 10%;
-
   cursor: pointer;
 }
