@@ -290,11 +290,17 @@ function playOnce() {
 }
 
 function parseTime(time) {
-  seconds = Math.floor(time);
+  if(time) {
+    seconds = Math.floor(time);
   let min = Math.floor(seconds / 60);
   let sec = seconds % 60;
   sec = sec >= 10 ? "" + sec : "0" + sec;
   return `${min}:${sec}`;
+  }
+  else {
+    return `0:00`;
+  }
+  
 }
 
 function changeProgress() {
