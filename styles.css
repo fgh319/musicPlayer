@@ -1,3 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 768px) {
+  #main {
+    width: 768px;
+    margin: 0 auto;  
+  }
+  .cover {
+    position: fixed;
+    top: 0;
+    /* right: 0; */
+    bottom: 0;
+    /* left: 0; */
+    width: 768px;
+    margin: 0 auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  
+  .cover::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    /* right: 0; */
+    bottom: 0;
+    /* left: 0; */
+    width: 768px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .panel {
+    position: fixed;
+    /* left: 0px; */
+    /* right: 0px; */
+    width: 768px;
+    margin: 0 auto;
+    bottom: 0px;
+    height: 240px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    padding: 20px 30px;
+    color: #fff;
+  }
+
+  .list {
+    color: #fff;
+    background-color: #000000ee;
+    
+    /* transform backdrop-filter等属性会影响position: fixed的效果  */
+  
+    /* backdrop-filter: blur(10px); */
+    /* -webkit-backdrop-filter: blur(10px); */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    /* right: 0; */
+    bottom: 0;
+    /* left: 0; */
+    width: 768px;
+    margin: 0 auto;
+    display: none;
+    /* transform: translateY(100%); */
+    overflow: auto;
+  }
+}
+
 .iconpark-icon {
   width: 1.8em;
   height: 1.8em;
@@ -38,7 +110,7 @@
   left: 0px;
   right: 0px;
   bottom: 0px;
-  height: 200px;
+  height: 240px;
   background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   padding: 20px 30px;
   color: #fff;
@@ -203,7 +275,10 @@
   height: 60px;
   background-color: rgba(13, 221, 65, 0.941);
   border-radius: 50%;
-  position: fixed;
+  /* position: fixed;
+  right: 10%;
+  bottom: 10%; */
+  position: absolute;
   right: 10%;
   bottom: 10%;
   cursor: pointer;
